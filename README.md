@@ -8,6 +8,8 @@ Google demands personal information, including credit card billing information
 in order to use their service. Further, at time of writing, only 60 minutes of
 speech is free per month before you are charged. This is soooo far from a good
 solution, but it's the best I've been able to find for free voice recognition.
+To help the development of Free/Libre Open Source voice recognition, please 
+contribute your voice to the [Common Voice](https://voice.mozilla.org/en) project!
 
 ## Setup
 
