@@ -56,4 +56,6 @@ module.exports = function (cb) {
     clearInterval(ix)
     cb(err, workingResult)
   }
+
+  return finish.bind(null, null, null)
 }
