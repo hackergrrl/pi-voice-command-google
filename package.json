@@ -4,5 +4,5 @@
     "@google-cloud/speech": "^3.2.0",
     "node-record-lpcm16": "^0.3.1"
   },
-  "version": "0.0.0"
+  "version": "1.0.0"
 }
