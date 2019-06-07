@@ -1,8 +1,10 @@
 {
   "name": "pi-voice-command-google",
+  "description": "Recognize a single voice command on a Raspberry Pi using the Google Speech API.",
   "dependencies": {
     "@google-cloud/speech": "^3.2.0",
     "node-record-lpcm16": "^0.3.1"
   },
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "license": "MIT"
 }
