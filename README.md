@@ -14,7 +14,7 @@ contribute your voice to the [Common Voice](https://voice.mozilla.org/en) projec
 ## Setup
 
 1. Install NodeJS 8.x.x or newer.
-2. Follow Step 1 and Step 2 [on this Google Speech API quickstart page](https://cloud.google.com/speech-to-text/docs/quickstart-protocol). You'll need to have the `GOOGLE_APPLICATION_CREDENTIALS` environment variable set when running your node process.
+2. Follow Step 1 and Step 2 [on this Google Speech API quickstart page](https://cloud.google.com/speech-to-text/docs/quickstart-protocol). Save the JSON file it gives you somewhere handy.
 3. Have ALSA set up for audio. If the `arecord` command is not available, you might need a package like `alsa-utils`.
 4. Run `npm install pi-voice-command-google` to install the module.
 
@@ -22,8 +22,11 @@ contribute your voice to the [Common Voice](https://voice.mozilla.org/en) projec
 
 ```js
 var voice = require('pi-voice-command-google')
+var fs = require('fs')
 
-voice(function (err, res) {
+var keysPath = './speech_keys.json'
+
+voice(keysPath, function (err, res) {
   if (err) throw err
   console.log('Transcript:', res)
 })
@@ -32,7 +35,7 @@ voice(function (err, res) {
 and saying 'hello world' aloud, outputs
 
 ```
-hello warld
+hello world
 ```
 
 ## API
@@ -41,10 +44,13 @@ hello warld
 var voice = require('pi-voice-command-google')
 ```
 
-### var cancel = voice(cb)
+### var cancel = voice(keysPath, cb)
 
 Returns a function `cancel` that can be used to terminate microphone recording
 and upload to Google servers.
+
+`keysPath` is a path to a JSON file: whatever Google gives you when you set up a Speech API project
+[here](https://cloud.google.com/speech-to-text/docs/quickstart-protocol).
 
 Otherwise, `cb(err, res)` is called. `res` will be a string with the contents
 of what the Google machinery heard you say.

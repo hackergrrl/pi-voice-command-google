@@ -1,7 +1,9 @@
 const speech = require('@google-cloud/speech');
 const record = require('node-record-lpcm16');
 
-module.exports = function (cb) {
+module.exports = function (keysPath, cb) {
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = keysPath
+
   const client = new speech.SpeechClient();
 
   const request = {
