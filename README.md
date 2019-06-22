@@ -44,7 +44,7 @@ hello world
 var voice = require('pi-voice-command-google')
 ```
 
-### var cancel = voice(keysPath, cb)
+### var cancel = voice(keysPath[, ready], cb)
 
 Returns a function `cancel` that can be used to terminate microphone recording
 and upload to Google servers.
@@ -54,6 +54,9 @@ and upload to Google servers.
 
 Otherwise, `cb(err, res)` is called. `res` will be a string with the contents
 of what the Google machinery heard you say.
+
+`ready` is optional, and is a function that will be called once the mic is set
+up and recording is starting.
 
 Right now, this function is hardcoded to abort after 3 seconds of silence (no
 command given; `null` as `res`), or after 1 second of silence after a command

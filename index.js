@@ -1,7 +1,13 @@
 const speech = require('@google-cloud/speech');
 const record = require('node-record-lpcm16');
 
-module.exports = function (keysPath, cb) {
+module.exports = function (keysPath, ready, cb) {
+  if (ready && !cb) {
+    cb = ready
+    ready = function(){}
+  }
+  if (!cb) cb = function(){}
+
   process.env.GOOGLE_APPLICATION_CREDENTIALS = keysPath
 
   const client = new speech.SpeechClient();
@@ -40,7 +46,7 @@ module.exports = function (keysPath, cb) {
     .pipe(recognizeStream);
 
   stream.once('data', function () {
-    console.log('listening..')
+    ready()
   })
 
   var ix = setInterval(function () {
